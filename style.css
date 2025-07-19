@@ -25,7 +25,6 @@ ul {
   list-style-type: none;   /* 去除項目前的圓點 */
   padding: 10;
   margin: 10;
-  display: flex;           /* 使用 Flex 排成橫向 */
   justify-content: center;
 
 }
