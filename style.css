@@ -56,10 +56,27 @@ a {
   white-space: normal;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
+  /* 手機樣式 */
   .col {
     font-size: 14px;
     padding: 8px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+  /* 平板樣式 */
+  .col {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  /* 桌機樣式 */
+  .col {
+    font-size: 18px;
+    padding: 12px;
   }
 }
 
