@@ -51,7 +51,18 @@ a {
   padding: 10px;
   border-right: 1px solid #000; /* 每欄右邊黑線 */
   text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
+
+@media (max-width: 600px) {
+  .col {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
 
 /* 最後一欄不要右邊線 */
 .col:last-child {
