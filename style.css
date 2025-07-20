@@ -1,7 +1,8 @@
 /* 通用選擇器，針對所有 HTML 元素 */
 * {
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 24px);
 }
+
 
 img {
   width: 100%;
