@@ -62,17 +62,22 @@ a {
     padding: 8px;
   }
 
-  .menu-row {
-    flex-direction: column; /* 垂直排列選單項目 */
-    align-items: center;
-  }
+.menu-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
 
-  .menu-row li {
-    writing-mode: vertical-rl; /* 垂直書寫，右到左 */
-    text-orientation: upright; /* 文字直立顯示 */
-    margin-bottom: 10px;
-  }
-
+.menu-row li {
+  writing-mode: vertical-rl;       /* 垂直書寫，右到左 */
+  text-orientation: upright;       /* 文字直立顯示 */
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #eee;
+  transition: background-color 0.3s;
+}
 }
 
 /* 平板樣式 */
