@@ -64,12 +64,12 @@ a {
 }
  
 /* 手機樣式 */
-/* 預設隱藏 slide bar */
+/* 預設隱藏手機 slidebar */
 .mobile-slidebar {
   display: none;
 }
 
-/* 📱 手機版：啟用滑動條 */
+/* 📱 手機版啟用滑動條 */
 @media screen and (max-width: 600px) {
   .mobile-slidebar {
     display: flex;
