@@ -9,7 +9,20 @@
 <body>
   <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
     <img src="image/enenyassault.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
-  </div></br>
+  </div>
+
+  <!-- 頁面中放置 header 的容器 -->
+<div id="header-container"></div>
+
+<!-- 引入 jQuery（如果尚未引入） -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 使用 jQuery 載入 header.html -->
+<script>
+  $(function() {
+    $("#header-container").load("header.html");
+  });
+</script><br>
 
     <div style=padding:5px>活動介紹:</br>
         <li>強敵來襲活動每次舉辦時間為2星期,每款機體關卡分為3個難度,任何難度的關卡通關後都有機率掉落活動機體.</li>
