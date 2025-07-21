@@ -57,37 +57,41 @@ a {
 
 /* 手機樣式 */
 @media screen and (max-width: 600px) {
-  .col {
-    font-size: 14px;
-    padding: 8px;
-  }
+    .menu-header {
+        background-color: #8abce5; /* 手機專屬背景顏色 */
+        padding: 10px 0; /* 手機專屬內邊距 */
+        text-align: center; /* 手機專屬文字對齊 */
+    }
 
-.menu-row {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  flex-wrap: wrap; /* 手機上可自動換行 */
-}
+    .menu-row {
+        display: flex;
+        flex-wrap: wrap; /* 允許換行 */
+        justify-content: center; /* 居中對齊 */
+    }
 
-.menu-row li {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  text-align: center;
-  padding: 3px;
-  background-color: #eee;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
+    .menu-row li {
+        width: calc(20% - 10px); /* 每個項目佔據五分之一的寬度 */
+        text-align: center;
+        writing-mode: vertical-rl; /* 文字直向顯示 */
+        text-orientation: upright; /* 文字方向正確 */
+        padding: 5px;
+        background-color: #eee;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin: 5px; /* 增加項目間距 */
+    }
 
-.menu-row li:hover {
-  background-color: #ddd;
-}
+    .menu-row li:hover {
+        background-color: #ddd;
+    }
 
-.menu-row li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
+    .menu-row li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        display: block; /* 確保鏈接區域可以點擊 */
+        padding: 5px; /* 增加點擊區域 */
+    }
 }
 
 /* 平板樣式 */
