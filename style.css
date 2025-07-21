@@ -55,47 +55,53 @@ a {
   white-space: normal;
 }
 
-
+/* 預設：桌機版顯示，手機版隱藏 */
+.menu-header {
+  display: block;
+}
+.mobile-menu-header {
+  display: none;
+}
+ 
 /* 手機樣式 */
+/* 預設隱藏 slide bar */
+.mobile-slidebar {
+  display: none;
+}
+
+/* 📱 手機版：啟用滑動條 */
 @media screen and (max-width: 600px) {
-    .menu-header {
-        background-color: #8abce5; /* header 背景顏色 */
-        padding: 10px 0; /* padding */
-        text-align: center; /* 文字居中 */
-    }
+  .mobile-slidebar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px;
+    gap: 8px;
+    background-color: #f2f2f2;
+    -webkit-overflow-scrolling: touch;
+  }
 
-    .menu-container {
-        overflow-x: auto; /* 允許橫向滾動 */
-        white-space: nowrap; /* 保持項目在一行 */
-    }
+  .mobile-slidebar ul {
+    display: inline-flex;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+  }
 
-    .menu-row {
-        display: inline-flex; /* 使用 inline-flex 使其在一行 */
-    }
+  .mobile-slidebar li {
+    flex: 0 0 auto;
+    background-color: #eee;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    list-style: none;
+  }
 
-    .menu-row li {
-        width: 100px; /* 每個項目固定寬度 */
-        text-align: center;
-        writing-mode: vertical-rl; /* 文字直向顯示 */
-        text-orientation: upright; /* 文字方向正確 */
-        padding: 5px;
-        background-color: #eee; /* 項目背景顏色 */
-        border-radius: 5px; /* 圓角 */
-        transition: background-color 0.3s; /* 變化效果 */
-        margin: 5px; /* 項目間距 */
-    }
-
-    .menu-row li:hover {
-        background-color: #ddd; /* 懸停效果 */
-    }
-
-    .menu-row li a {
-        text-decoration: none; /* 去掉下劃線 */
-        color: #333; /* 文字顏色 */
-        font-weight: bold; /* 粗體 */
-        display: block; /* 確保鏈接區域可以點擊 */
-        padding: 5px; /* 增加點擊區域 */
-    }
+  .mobile-slidebar li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
 }
 
 /* 平板樣式 */
