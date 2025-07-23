@@ -160,7 +160,7 @@
     div.className = "card";
 
     div.innerHTML = `
-      <div class="summary">${card.名稱}｜${card.種類}｜稀有度：${card.稀有度}</div>
+      <div class="summary"  style="color: ${card.名稱色彩 || '#000'};">${card.名稱}｜${card.種類}｜稀有度：${card.稀有度}</div>
       <button class="close-btn" onclick="closeCard(this)">×</button>
       <div class="details">
         <div class="line"><span class="label">圖片：</span>
