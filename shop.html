@@ -216,5 +216,13 @@
 
     <div class="col"><a href =index.html>回到主頁</a></div>
 
-    </body>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML("beforeend", html);
+    });
+</script>
+    
+</body>
 </html>

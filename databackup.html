@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>卡片資訊清單展示</title>
+  <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SSDHXQ3J1W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SSDHXQ3J1W');
+</script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #aaa;
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      background-color: #eef;
+      cursor: pointer;
+    }
+    .card.focused {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 960px;
+      height: 80vh;
+      overflow-y: auto;
+      z-index: 999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      background: #fff;
+      border-radius: 12px;
+    }
+    .summary {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .details {
+      display: none;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    .card.focused .details {
+      display: block;
+    }
+    .line {
+      margin: 4px 0;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 4px;
+    }
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #aaa;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      background: #444;
+    }
+    .view-weapons {
+      margin-top: 16px;
+      padding: 8px;
+      border: none;
+      background: #444;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .view-weapons:hover {
+      background: #222;
+    }
+    .weapon-wrapper {
+      display: none;
+      margin-top: 12px;
+      padding: 8px;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+    <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
+    <img src="image/cover.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
+  </div>
+
+  <!-- 頁面中放置 header 的容器 -->
+<div id="header-container"></div>
+
+<!-- 引入 jQuery（如果尚未引入） -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 使用 jQuery 載入 header.html -->
+<script>
+  $(function() {
+    $("#header-container").load("header.html");
+  });
+</script><br>
+  <h2 style="text-align:center;">單位圖鑑（點擊展開｜右上❌關閉）</h2>
+  <div id="card-container" class="card-grid"></div>
+
+  <script>
+    function closeCard(btn) {
+      const card = btn.closest(".card");
+      card.classList.remove("focused");
+      const weapon = card.querySelector(".weapon-wrapper");
+      const toggleBtn = card.querySelector(".view-weapons");
+      if (weapon && toggleBtn) {
+        weapon.style.display = "none";
+        toggleBtn.innerText = "查看武裝資料";
+      }
+    }
+
+    function toggleWeaponView(btn) {
+      const wrapper = btn.nextElementSibling;
+      const isVisible = wrapper.style.display === "block";
+      wrapper.style.display = isVisible ? "none" : "block";
+      btn.innerText = isVisible ? "查看武裝資料" : "收合武裝資料";
+    }
+
+    fetch("cards0079.json")
+      .then(res => res.json())
+      .then(cards => {
+        const container = document.getElementById("card-container");
+
+        cards.forEach(card => {
+          const div = document.createElement("div");
+          div.className = "card";
+
+          div.innerHTML = `
+            <div class="summary">${card.名稱}｜${card.種類}｜稀有度：${card.稀有度}</div>
+            <button class="close-btn" onclick="closeCard(this)">×</button>
+            
+            <div class="details">
+              <div class="line"><span class="label">圖片：</span>
+            <img src="${card.圖片}" alt="${card.名稱}" style="width:100%; max-width:300px; border-radius:6px;" /></div>
+              <div class="line"><span class="label">入手方法：</span>${card.入手方法}</div>
+              <div class="line"><span class="label">地型：</span>${card.地型.join("、")}</div>
+              <div class="line"><span class="label">系列：</span>${card.系列}</div>
+              <div class="line"><span class="label">標籤：</span>${card.標籤.join("、")}</div>
+              <div class="line"><span class="label">裝置：</span>${card.裝置}</div>
+              <div class="line"><span class="label">單位能力：</span>${card.單位能力}</div>
+              <div class="line"><span class="label">HP：</span>${card.HP}</div>
+              <div class="line"><span class="label">EN：</span>${card.EN}</div>
+              <div class="line"><span class="label">移動力：</span>${card.移動力}</div>
+              <div class="line"><span class="label">攻擊力：</span>${card.攻擊力}</div>
+              <div class="line"><span class="label">防禦力：</span>${card.防禦力}</div>
+              <div class="line"><span class="label">機動力：</span>${card.機動力}</div>
+              <div class="line"><span class="label">專屬駕駛員：</span>${card.專屬駕駛員}</div>
+              <button class="view-weapons" onclick="toggleWeaponView(this)">查看武裝資料</button>
+              <div class="weapon-wrapper">
+                ${card.武裝.map(w => w.武裝名稱 ? `
+                  <div class="line"><span class="label">武裝：</span>${w.武裝名稱}</div>
+                  <div class="line"><span class="label">RANGE：</span>${w.RANGE}</div>
+                  <div class="line"><span class="label">POWER：</span>${w.POWER}</div>
+                  <div class="line"><span class="label">EN：</span>${w.EN}</div>
+                  <div class="line"><span class="label">命中：</span>${w.命中}</div>
+                  <div class="line"><span class="label">爆擊：</span>${w.爆擊}</div>
+                  <div class="line"><span class="label">彈藥量：</span>${w.彈藥量}</div>
+                  <div class="line"><span class="label">武裝屬性：</span>${w.武裝屬性}</div>
+                  <div class="line"><span class="label">武裝類型：</span>${w.武裝類型}</div>
+                  <div class="line"><span class="label">武裝效果：</span>${w.武裝效果}</div>
+                  <div class="line"><span class="label">使用限制：</span>${w.使用限制}</div>
+                  <br>
+                ` : "").join("")}
+              </div>
+            </div>
+          `;
+
+          div.querySelector(".summary").addEventListener("click", () => {
+            const isFocused = div.classList.contains("focused");
+            document.querySelectorAll(".card").forEach(c => c.classList.remove("focused"));
+            if (!isFocused) div.classList.add("focused");
+          });
+
+          container.appendChild(div);
+        });
+      });
+  </script>
+
+  <div class="col"><a href =index.html>回到主頁</a></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML("beforeend", html);
+    });
+</script>
+</body>
+</html>
