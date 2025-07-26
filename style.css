@@ -9,6 +9,7 @@ img {
   height: auto;
 }
 
+
 /* 滑鼠指向 <summary> 時變紅 */
 summary:hover {
   color: red;
@@ -38,6 +39,16 @@ a {
   color: #333;
 }
 
+.header-menu {
+  display: grid; /* 使用 grid 布局 */
+  grid-template-columns: repeat(7, 1fr); /* 每行 7 列 */
+  gap: 10px; /* 項目之間的間距 */
+}
+
+.header-menu li {
+  text-align: center; /* 讓文字居中 */
+}
+
 /* 資料表格樣式 */
 .row {
   display: flex;
@@ -56,71 +67,31 @@ a {
 }
 
 
-/* 預設：桌機版顯示，手機版隱藏 */
-.menu-header {
-  display: block;
-}
-.mobile-menu-header {
-  display: none;
-}
- 
-/* 手機樣式 */
-/* 預設隱藏手機 slidebar */
-.mobile-slidebar {
-  display: none;
-}
 
-/* 📱 手機版啟用滑動條 */
-@media screen and (max-width: 600px) {
-  .mobile-slidebar {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 8px;
-    gap: 8px;
-    background-color: #f2f2f2;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-slidebar ul {
-    display: inline-flex;
-    gap: 8px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .mobile-slidebar li {
-    flex: 0 0 auto;
-    background-color: #eee;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-    list-style: none;
-  }
-
-  .mobile-slidebar li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+/* 📱 手機版：展開選單可滾動 */
+@media screen and (max-width: 992px) {
+  #navItems {
+    max-height: 70vh;
+    overflow-y: auto;
   }
 }
 
-/* 平板樣式 */
-@media screen and (min-width: 601px) and (max-width: 992px) {
+/* 💻 平板與桌機版：統一字型與間距（選擇性） */
+@media screen and (min-width: 601px) {
   .col {
     font-size: 16px;
     padding: 10px;
   }
 }
 
-/* 桌機樣式 */
 @media screen and (min-width: 993px) {
   .col {
     font-size: 18px;
     padding: 12px;
   }
 
-  .menu-row li {
+  /* 桌機版選單項目微調 */
+  .navbar-nav li {
     flex: 0 1 auto;
   }
 }
@@ -130,39 +101,6 @@ a {
   border-right: none;
 }
 
-/* Header 樣式 */
-.menu-header {
-  background-color: #8abce5;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.menu-container {
-  display: inline-block;
-}
-
-.menu-row {
-  list-style: none;
-  padding: 0;
-  margin: 5px 0;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-}
-
-.menu-row li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.menu-row li a:hover {
-  background-color: #ddd;
-}
 
 .card-grid {
   display: grid;
@@ -178,4 +116,31 @@ a {
   padding: 16px;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+/* 📱 手機版展開選單可滾動 */
+@media screen and (max-width: 992px) {
+  #navItems {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+/* 🖥️ 桌機選單排版微調 */
+@media screen and (min-width: 993px) {
+  .navbar-nav li {
+    flex: 0 1 auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header-menu {
+    grid-template-columns: repeat(3, 1fr); /* 小屏幕每行顯示 3 列 */
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header-menu {
+    grid-template-columns: repeat(4, 1fr); /* 中等屏幕每行顯示 4 列 */
+  }
 }
