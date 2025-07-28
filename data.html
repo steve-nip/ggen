@@ -77,6 +77,9 @@
       color: #444;
     }
     .close-btn {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
       position: absolute;
       top: 12px;
       right: 12px;
@@ -90,6 +93,12 @@
       font-weight: bold;
       cursor: pointer;
     }
+
+    .card.focused .close-btn {
+  opacity: 1;
+  pointer-events: auto;
+    }
+
     .close-btn:hover {
       background: #444;
     }
@@ -130,7 +139,7 @@
     $("#header-container").load("header.html");
   });
 </script><br>
-  <h2 style="text-align:center;">單位圖鑑（點擊展開｜❌關閉｜能力值以滿星SP化100等級顯示）</h2>
+  <h5 style="text-align:center;">單位圖鑑（點擊展開｜❌關閉｜能力值以滿星SP化100等級顯示）</h2>
   <div id="card-container" class="card-grid"></div>
 
   <script>
@@ -161,12 +170,13 @@
     div.className = "card";
 
     div.innerHTML = `
-      <div class="summary"  style="color: ${card.名稱色彩 || '#000'};">${card.名稱}｜${card.種類}｜稀有度：${card.稀有度}</div>
+      <div class="summary"  style="color: ${card.名稱色彩 || '#000'};">${card.名稱}｜${card.稀有度}</div>
       <button class="close-btn" onclick="closeCard(this)">×</button>
       <div class="details">
         <div class="line"><span class="label">圖片：</span>
           <img src="${card.圖片}" alt="${card.名稱}" style="width:100%; max-width:300px; border-radius:6px;" />
         </div>
+        <div class="line"><span class="label">種類：</span>${card.種類}</div>
         <div class="line"><span class="label">入手方法：</span>${card.入手方法}</div>
         <div class="line"><span class="label">地型：</span>${card.地型.join("、")}</div>
         <div class="line"><span class="label">系列：</span>${card.系列}</div>
@@ -238,7 +248,10 @@
 </details>
 
 
-  <div class="col"><a href =index.html>回到主頁</a></div>
+<div class="container text-center my-5">
+  <a href="index.html" class="btn btn-primary">回到主頁</a>
+</div>
+
 <script>
   fetch("footer.html")
     .then(res => res.text())

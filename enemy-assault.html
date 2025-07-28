@@ -1,117 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>enemy-assault</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SSDHXQ3J1W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>enemy-assault</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-  gtag('config', 'G-SSDHXQ3J1W');
-</script>
-<style>
-body {
-      font-family: sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-    }
-</style>
-
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSDHXQ3J1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SSDHXQ3J1W');
+  </script>
 </head>
-<body>
-  <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
-    <img src="image/enenyassault.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
+<body class="bg-light">
+
+  <!-- 頁首區塊 -->
+  <div class="bg-dark text-center py-3">
+    <img src="image/enenyassault.jpg" alt="Logo" class="img-fluid" style="max-width:700px;">
   </div>
 
-  <!-- 頁面中放置 header 的容器 -->
-<div id="header-container"></div>
-
-<!-- 引入 jQuery（如果尚未引入） -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- 使用 jQuery 載入 header.html -->
-<script>
-  $(function() {
-    $("#header-container").load("header.html");
-  });
-</script><br>
-
-    <div style=padding:5px>活動介紹:</br>
-        <li>強敵來襲活動每次舉辦時間為2星期,每款機體關卡分為3個難度,任何難度的關卡通關後都有機率掉落活動機體.</li>
-        <li>每期新推出的機體都有相關活動使命,完成後可獲得素材獎勵.</li>
-        <li>玩家可以選擇[歷史戰鬥]遊玩以往的關卡來刷取機體,但[歷史戰鬥]不設活動使命.</li></br>
-    </div>
-
-    <details><summary>活動使命及報酬-點擊展開</summary>
-    <div class="row">
-        <div class="col">活動使命
-    <ol type="1" start="1">
-    <li>首次以普通難度完成通關</li>
-    <li>以普通難度或更高難度通關遊戲1次</li>
-    <li>以普通難度或更高難度通關遊戲3次</li>
-    <li>以正常或更高難度通關遊戲5次</li>
-    <li>以困難或更高難度通關遊戲5次</li>
-    <li>以專家難度以上通關10/20/25/30/35/40次</li>
-    <li>以一般難度或更高難度通關遊戲 10 次</li>
-    <li>以困難難度或更高難度通關遊戲 10 次</li>
-    <li>以專家難度或更高難度通關遊戲 15 次</li>
-  </ol></p></div>
-        <div class="col">使命報酬
-    <ol type="1" start="1">
-        <li>當期活動機體x1</li>
-        <li>機體強化數據SSR x 5</li>
-        <li>機體強化數據SSR x 5</li>
-        <li>單位強化數據SSR x 10</li>
-        <li>單位強化數據SSR x 20</li>
-        <li>單位強化數據SSR x 30</li>
-        <li>當期活動機體極限突破素材 SSR</li>
-        <li>當期活動機體極限突破素材 SSR</li>
-        <li>當期活動機體極限突破素材 SSR</li>
-    </ol></p></div>        
-        </div>
-    </div>
-    </details>
-
-
-  <div class="row">
-  <div class="col"><p>活動內容</p></div>
-  <div class="col" style="flex: 1;"><p>活動時間</p></div>
-  <div class="col" style="flex: 1;"><p>出現敵機</p></div>
-</div>
-<div class="row">
-  <div class="col"><img src="image/enenyassault.jpg" alt="圖片2"></div>
-  <div class="col" style="flex: 1;"><p>22/4/25至6/5/25</p></div>
-  <div class="col" style="flex: 1;"><p>紅色高達(0085)</p></div>
-</div>
-
-<div class="row">
-  <div class="col"><img src="image/enemyassault513.jpg" alt="圖片2"></div>
-  <div class="col" style="flex: 1;"><p>13/5/25至23/5/25</p></div>
-  <div class="col" style="flex: 1;"><p>奧伯隆(裝甲型態)&骰子高達</p></div>
-</div>
-
-<div class="row">
-  <div class="col"><img src="image/enemyassault630.jpg" alt="圖片2"></div>
-  <div class="col" style="flex: 1;"><p>30/6/25至14/7/25</p></div>
-  <div class="col" style="flex: 1;"><p>命運型衝擊高達&全裝甲型百式改</p></div>
-  </div>
-
-
-<div class="col"><a href =index.html>回到主頁</a></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML("beforeend", html);
+  <!-- header.html 載入 -->
+  <div id="header-container"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function() {
+      $("#header-container").load("header.html");
     });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </script>
 
+  <!-- 活動介紹 -->
+  <div class="container my-4">
+    <div class="card">
+    <div class="card-body" style="padding: 10px;">
+    <h5 class="card-title">活動介紹：</h5>
+    <ul>
+      <li>• 強敵來襲活動每次舉辦 2 週，機體關卡分為 3 難度，通關皆可掉落活動機體。</li>
+      <li>• 每期新推出機體皆具備專屬使命，完成可獲素材獎勵。</li>
+      <li>• 可透過「歷史戰鬥」遊玩過往關卡刷機體，但不含使命。</li>
+    </ul>
+     </div>
+    </div>
+  </div>
+
+  <!-- 活動使命與報酬 -->
+  <div class="container mb-4">
+    <details>
+      <summary class="h5">活動使命及報酬</summary>
+      <div class="row fw-bold text-center bg-secondary text-white py-2 mt-3">
+        <div class="col">活動使命</div>
+        <div class="col">使命報酬</div>
+      </div>
+
+
+      <div class="row bg-white border">
+        <div class="col">
+          <ol>
+            <li>首次以普通難度完成通關</li>
+            <li>普通或以上難度通關 1 次</li>
+            <li>普通或以上難度通關 3 次</li>
+            <li>正常或以上難度通關 5 次</li>
+            <li>困難或以上難度通關 5 次</li>
+            <li>專家以上難度通關 10/20/25/30/35/40 次</li>
+            <li>一般或以上難度通關 10 次</li>
+            <li>困難或以上難度通關 10 次</li>
+            <li>專家或以上難度通關 15 次</li>
+          </ol>
+        </div>
+
+        <div class="col">
+          <ol>
+            <li>當期活動機體 x1</li>
+            <li>單位強化數據 SSR x5</li>
+            <li>單位強化數據 SSR x5</li>
+            <li>單位強化數據 SSR x10</li>
+            <li>單位強化數據 SSR x20</li>
+            <li>單位強化數據 SSR x30</li>
+            <li>活動機體突破素材 SSR</li>
+            <li>活動機體突破素材 SSR</li>
+            <li>活動機體突破素材 SSR</li>
+          </ol>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 活動歷程表 -->
+  <div class="container mb-4">
+    <h5 class="mb-3">活動列表</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead class="table-secondary text-center">
+          <tr>
+            <th>活動內容</th>
+            <th>活動時間</th>
+            <th>出現敵機</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;"><img src="image/enenyassault.jpg" alt="圖1" class="img-fluid" style="max-width:400px;"></td>
+            <td style="text-align:center;">22/4/25 至 6/5/25</td>
+            <td style="text-align:center;">紅色高達 (0085)</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img src="image/enemyassault513.jpg" alt="圖2" class="img-fluid" style="max-width:400px;"></td>
+            <td style="text-align:center;">13/5/25 至 23/5/25</td>
+            <td style="text-align:center;">奧伯隆 (裝甲型態) & 骰子高達</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;"><img src="image/enemyassault630.jpg" alt="圖3" class="img-fluid" style="max-width:400px;"></td>
+            <td style="text-align:center;">30/6/25 至 14/7/25</td>
+            <td style="text-align:center;">命運型衝擊高達 & 全裝甲型百式改</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 回到主頁按鈕 -->
+  <div class="text-center mb-5">
+    <a href="index.html" class="btn btn-primary">回到主頁</a>
+  </div>
+
+  <!-- footer.html 載入 -->
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.body.insertAdjacentHTML("beforeend", html);
+      });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

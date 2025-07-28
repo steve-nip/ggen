@@ -18,27 +18,36 @@
 </head>
 <body>
 
-  <header>
-    <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
-  <img src="image/cover.jpg" alt="圖片描述" style="max-width: 100%; max-width:700px;  height: auto; display: block; margin: auto;">
-</div>
-    
-    
-     <div style="text-align: center;">
-  <ul style="display: inline-block; text-align: left;">
-    <li><a href="map-event.html">地圖活動</a></li>
-    <li><a href="tower-event.html">世代之塔</a></li>
-    <li><a href="enemy-assault.html">強敵來襲</a></li>
-    <li><a href="story-event.html">故事事件</a></li>
-    <li><a href="master-league.html">大師聯盟</a></li>
-    <li><a href="eternal-road.html">永恆之路</a></li>
-    <li><a href="gacha-event.html">精選補給</a></li>
-    <li><a href="request.html">角色要求</a></li>
-    <li><a href="shop.html">遊戲商店</a></li>
-    <li><a href="data.html">單位資料</a></li>
-    <li><a href="comment.html">留言專區</a></li>
-  </ul>
-</div>
+  <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
+    <img src="image/cover.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
+  </div>
+
+  <div id="header-container"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(function() {
+    $("#header-container").load("header.html");
+  });
+</script>
+
+<div class="container my-4">
+    <div class="card">
+    <div class="card-body" style="padding: 10px;">
+    <h5 class="card-title">最新消息(7/26更新)：</h5>
+    <ol type="1" start="1">
+      <li>7/31推出精選機體：UR 報喪女妖 命運女神（防禦） UR 盟主高達 （攻擊） 支援人員 UR魔鬼高達第二型態</li>
+      <li>7/31推出世代之塔、報酬為UR 莉古絲(駕駛員)（支援）</li>
+      <li>7/31新增永恆關卡EX （Z高達系列）</li>
+      <li>強敵來襲將增加Challenge 難度</li>
+      <li>BGM禮包準備中</li>
+      <li>將新增（我的最愛）機體篩選功能</li>
+      <li>批量開發及月卡正在準備中</li>
+    </ol>
+    </div>
+    </div>
+
 
   </header>
   <script>
