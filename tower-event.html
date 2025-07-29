@@ -18,7 +18,7 @@
 </head>
 <body>
     <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
-    <img src="image/cover.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
+    <img src="image/tower.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
     </div>
 
 <div id="header-container"></div>
@@ -30,13 +30,45 @@
     $("#header-container").load("header.html");
   });
 </script><br>    
-    
-<div style="text-align: center;">
-    待更新
+<div class="container my-4">
+    <div class="card">
+    <div class="card-body" style="padding: 10px;">
+    <h5 class="card-title">活動介紹：</h5>
+    <ul>
+      <li>• 世代之塔中，玩家編制2隊自由部隊,由第一層開始完成關卡及挑戰登上最頂層。</li>
+      <li>• 關卡中可能於一定範圍內配置具有強力效果和弱化效果的單位。</li>
+      <li>• 參加世代之塔不消耗AP。</li>
+      <li>• 特定關卡中可額外獲得武裝強化零件UR,SP化晶片,強化配件。</li>
+      <li>• 世代之塔共有15層,所有關卡於首次完成時可獲得鑽石,完成所有關卡將可獲得3300鑽石。</li>
+      <li>• 世代之塔預計會在每次推出事件時增加樓層。</li>
+      </ul>
+    </div>
+    </div>
+  </div>
    
-</div></br>
+<div class="container my-4">
+  <table class="table table-bordered text-center align-middle">
+    <thead class="table-secondary">
+      <tr>
+        <th>活動時間</th>
+        <th>活動獎勵</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>31/7/25 至 ?/8/25</td>
+        <td>
+          <img src="image/tower1reward.jpg" alt="活動圖片1" class="img-fluid" style="max-height: 250px; max-width: 100%; object-fit: contain;">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<div class="col"><a href =index.html>回到主頁</a></div>
+
+<div class="container text-center my-5">
+  <a href="index.html" class="btn btn-primary">回到主頁</a>
+</div>
 <script>
   fetch("footer.html")
     .then(res => res.text())
