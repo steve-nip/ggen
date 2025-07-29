@@ -15,6 +15,95 @@
 
   gtag('config', 'G-SSDHXQ3J1W');
 </script>
+
+<style>
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #aaa;
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      background-color: #eef;
+      cursor: pointer;
+    }
+    .card.focused {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 960px;
+      height: 80vh;
+      overflow-y: auto;
+      z-index: 999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      background: #fff;
+      border-radius: 12px;
+    }
+    .summary {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .details {
+      display: none;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    .card.focused .details {
+      display: block;
+    }
+    .line {
+      margin: 4px 0;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 4px;
+    }
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+    .close-btn {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #aaa;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .card.focused .close-btn {
+  opacity: 1;
+  pointer-events: auto;
+    }
+
+    .close-btn:hover {
+      background: #444;
+    }
+    </style>
+
 </head>
 <body>
     <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
@@ -30,9 +119,61 @@
     $("#header-container").load("header.html");
   });
 </script><br>    
+
+<script>
+function closeCard(btn) {
+    const card = btn.closest(".card");
+    card.classList.remove("focused");
+    }
     
-<div style="text-align: center;">
-    待更新
+    function generateCard(card) {
+    const div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+      <div class="summary">${card.名稱}｜${card.稀有度}</div>
+      <button class="close-btn" onclick="closeCard(this)">×</button>
+      <div class="details">
+        <div class="line"><span class="label">圖片：</span>
+          <img src="${card.圖片}" alt="${card.名稱}" style="width:100%; max-width:300px; border-radius:6px;" />
+        </div>
+        <div class="line"><span class="label">入手方法：</span>${card.入手方法}</div>
+        <div class="line"><span class="label">HP支援：</span>${card.HP支援}</div>
+        <div class="line"><span class="label">攻擊力支援：</span>${card.攻擊力支援}</div>
+        <div class="line"><span class="label">隊長技能：</span>${card.隊長技能}</div>
+        <div class="line"><span class="label">支援技能：</span>${card.支援技能}</div>
+        </div>
+      </div>
+    `;
+    div.querySelector(".summary").addEventListener("click", () => {
+      const isFocused = div.classList.contains("focused");
+      document.querySelectorAll(".card").forEach(c => c.classList.remove("focused"));
+      if (!isFocused) div.classList.add("focused");
+    });
+
+    return div;
+  }
+
+    function loadCardData(jsonPath, containerId) {
+    fetch(jsonPath)
+      .then(res => res.json())
+      .then(cards => {
+        const container = document.getElementById(containerId);
+        cards.forEach(card => container.appendChild(generateCard(card)));
+      });
+  }
+
+  // ☑️ 呼叫不同年代的載入
+  loadCardData("warshipur.json", "card-container-warshipur")
+</script>
+
+<h5 style="text-align:center;">支援人員圖鑑（點擊展開｜❌關閉｜能力值以滿星100等級顯示）</h5>
+
+<details>
+  <summary class=h5 style="text-align: center;"> UR支援人員</summary>
+  <div id="card-container-warshipur" class="card-grid"></div>
+</details>
+
    
 </div></br>
 
