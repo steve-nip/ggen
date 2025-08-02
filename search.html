@@ -15,6 +15,143 @@
 
   gtag('config', 'G-SSDHXQ3J1W');
 </script>
+
+<style>
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+    }
+    .card-grid {
+      align-items: start;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #aaa;
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      background-color: #eef;
+      cursor: pointer;
+    }
+    .card.focused {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 960px;
+      height: 80vh;
+      max-height: 90vh;
+      overflow: auto;
+      overflow-y: auto;
+      z-index: 999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      background: #fff;
+      border-radius: 12px;
+    }
+    .summary {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .details {
+      display: none;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    .card.focused .details {
+      display: block;
+    }
+    .line {
+      margin: 4px 0;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 4px;
+    }
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+    .close-btn {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #aaa;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .card.focused .close-btn {
+  opacity: 1;
+  pointer-events: auto;
+    }
+
+    .close-btn:hover {
+      background: #444;
+    }
+    .view-weapons {
+      margin-top: 16px;
+      padding: 8px;
+      border: none;
+      background: #444;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .view-weapons:hover {
+      background: #222;
+    }
+    .weapon-wrapper {
+      display: none;
+      margin-top: 12px;
+      padding: 8px;
+      border-top: 1px solid #ccc;
+    }
+
+    fieldset {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* 每行 5 格 */
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* 每個項目是 label 包著 checkbox 和文字 */
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  padding: 4px 6px;
+}
+
+/* ✅ 方格大小加大 */
+fieldset input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #3272ff; /* 可選：修改 checkbox 顏色（支援現代瀏覽器） */
+}
+
+  .control-buttons {
+    margin-top: 20px;
+  }
+  </style>
+
 </head>
 <body>
     <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
@@ -31,8 +168,258 @@
   });
 </script><br>    
     
-<div style="text-align: center;">
-    待更新
+
+<div id="search-form">
+    <!-- 🔀 搜尋模式切換 -->
+<fieldset>
+  <legend>搜尋模式：</legend>
+  <label><input type="radio" name="matchMode" value="AND" checked> AND（全部符合）</label>
+  <label><input type="radio" name="matchMode" value="OR"> OR（任一符合）</label>
+</fieldset>
+
+  <!-- 💎 稀有度 -->
+  <fieldset>
+    <legend>稀有度：</legend>
+    <label><input type="radio" name="rarity" value="UR"> UR</label>
+    <label><input type="radio" name="rarity" value="SSR"> SSR</label>
+    <label><input type="radio" name="rarity" value="SR"> SR</label>
+    <label><input type="radio" name="rarity" value="R"> R</label>
+    <label><input type="radio" name="rarity" value="N"> N</label>
+  </fieldset>
+
+  <!-- 🧬 種類 -->
+  <fieldset>
+    <legend>種類：</legend>
+    <label><input type="radio" name="type" value="攻擊"> 攻擊</label>
+    <label><input type="radio" name="type" value="支援"> 支援</label>
+    <label><input type="radio" name="type" value="防禦"> 防禦</label>
+  </fieldset>
+
+  <!-- 🎯 入手方法 -->
+  <fieldset>
+    <legend>入手方法：</legend>
+    <label><input type="checkbox" name="obtain" value="開發"> 開發</label>
+    <label><input type="checkbox" name="obtain" value="機體補給"> 機體補給</label>
+    <label><input type="checkbox" name="obtain" value="活動開發"> 活動開發</label>
+    <label><input type="checkbox" name="obtain" value="活動報酬"> 活動報酬</label>
+  </fieldset>
+
+  <!-- 🧾 系列 -->
+  <details>
+    <summary><strong>系列（點擊展開）：</strong></summary>
+    <fieldset>
+      <legend style="display:none;">系列</legend>
+      <label><input type="checkbox" name="series" value="機動戰士高達">機動戰士高達</label>
+      <label><input type="checkbox" name="series" value="機動戰士Z高達 A New Translation">機動戰士Z高達 A New Translation</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達ZZ">機動戰士高達ZZ</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 馬沙之反擊">機動戰士高達 馬沙之反擊 </label>
+      <label><input type="checkbox" name="series" value="機動武鬥傳G高達">機動武鬥傳G高達</label>
+      <label><input type="checkbox" name="series" value="新機動戰記高達W">新機動戰記高達W</label>
+      <label><input type="checkbox" name="series" value="機動新世紀高達X">機動新世紀高達X</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED">機動戰士高達SEED</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED DESTINY">機動戰士高達SEED DESTINY</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 鐵血孤兒">機動戰士高達 鐵血孤兒</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 水星的魔女">機動戰士高達 水星的魔女</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 THE ORIGIN">機動戰士高達 THE ORIGIN</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 THE ORIGIN MSD">機動戰士高達 THE ORIGIN MSD</label>
+      <label><input type="checkbox" name="series" value="MSV">MSV</label>
+      <label><input type="checkbox" name="series" value="MS-X">MS-X</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 MS IGLOO">機動戰士高達 MS IGLOO</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 MS IGLOO 603">機動戰士高達 MS IGLOO 603</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 MS IGLOO2 重力戰線">機動戰士高達 MS IGLOO2 重力戰線</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 第08MS小隊">機動戰士高達 第08MS小隊</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 CROSS DIMENSION 0079">機動戰士高達 CROSS DIMENSION 0079</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 蒼藍命運">機動戰士高達外傳 蒼藍命運</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達戰記 Lost War Chronicles">機動戰士高達戰記 Lost War Chronicles</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <!-- 可繼續加入更多系列 -->
+    </fieldset>
+  </details>
+
+  <!-- 🏷️ 標籤 -->
+  <details>
+    <summary><strong>標籤（點擊展開）：</strong></summary>
+    <fieldset>
+      <legend style="display:none;">標籤</legend>
+      <label><input type="checkbox" name="tags" value="宇宙世紀系列">宇宙世紀系列</label>
+      <label><input type="checkbox" name="tags" value="獨立世界觀系列">獨立世界觀系列</label>
+      <label><input type="checkbox" name="tags" value="高達">高達</label>
+      <label><input type="checkbox" name="tags" value="單眼球">單眼球</label>
+      <!-- 可繼續加入更多標籤 -->
+    </fieldset>
+  </details>
+
+  <!-- 🔘 控制按鈕 -->
+  <div class="control-buttons">
+    <button onclick="handleSearch()">搜尋</button>
+    <button onclick="clearAll()">清空</button>
+  </div>
+</div>
+
+<script>
+  function clearAll() {
+    const checkboxes = document.querySelectorAll('#search-form input[type="checkbox"]');
+    checkboxes.forEach(box => box.checked = false);
+  }
+
+
+</script>
+
+<div id="search-result-container"  class="card-grid"></div>
+
+<script>
+  // 🔧 關閉卡片視窗
+  function closeCard(btn) {
+    const card = btn.closest(".card");
+    card.classList.remove("focused");
+    const weapon = card.querySelector(".weapon-wrapper");
+    const toggleBtn = card.querySelector(".view-weapons");
+    if (weapon && toggleBtn) {
+      weapon.style.display = "none";
+      toggleBtn.innerText = "查看武裝資料";
+    }
+  }
+
+  // 🔧 展開／收合武裝區塊
+  function toggleWeaponView(btn) {
+    const wrapper = btn.nextElementSibling;
+    const isVisible = wrapper.style.display === "block";
+    wrapper.style.display = isVisible ? "none" : "block";
+    btn.innerText = isVisible ? "查看武裝資料" : "收合武裝資料";
+  }
+
+ function generateCard(card) {
+  const div = document.createElement("div");
+  div.className = "card";
+
+  div.innerHTML = `
+    <div class="summary" style="cursor:pointer; color: ${card.名稱色彩 || '#000'};">
+      ${card.名稱}｜${card.稀有度}
+    </div>
+    <button class="close-btn" onclick="closeCard(this)">×</button>
+    <div class="details" style="display:none;">
+      <div class="line"><span class="label">圖片：</span>
+        <img src="${card.圖片}" alt="${card.名稱}" onerror="this.style.display='none'" style="width:100%; max-width:300px; border-radius:6px;" />
+      </div>
+      <div class="line"><span class="label">種類：</span>${card.種類}</div>
+      <div class="line"><span class="label">入手方法：</span>${card.入手方法}</div>
+      <div class="line"><span class="label">地型：</span>${card.地型.join("、")}</div>
+      <div class="line"><span class="label">系列：</span>${card.系列}</div>
+      <div class="line"><span class="label">標籤：</span>${card.標籤.join("、")}</div>
+      <div class="line"><span class="label">裝置：</span>${card.裝置}</div>
+      <div class="line"><span class="label">單位能力：</span>${card.單位能力}</div>
+      <div class="line"><span class="label">HP：</span>${card.HP}</div>
+      <div class="line"><span class="label">EN：</span>${card.EN}</div>
+      <div class="line"><span class="label">移動力：</span>${card.移動力}</div>
+      <div class="line"><span class="label">攻擊力：</span>${card.攻擊力}</div>
+      <div class="line"><span class="label">防禦力：</span>${card.防禦力}</div>
+      <div class="line"><span class="label">機動力：</span>${card.機動力}</div>
+      <div class="line"><span class="label">專屬駕駛員：</span>${card.專屬駕駛員}</div>
+      <button class="view-weapons" onclick="toggleWeaponView(this)">查看武裝資料</button>
+      <div class="weapon-wrapper" style="display:none;">
+        ${card.武裝.map(w => w.武裝名稱 ? `
+          <div class="line"><span class="label">武裝：</span>${w.武裝名稱}</div>
+          <div class="line"><span class="label">RANGE：</span>${w.RANGE}</div>
+          <div class="line"><span class="label">POWER：</span>${w.POWER}</div>
+          <div class="line"><span class="label">EN：</span>${w.EN}</div>
+          <div class="line"><span class="label">命中：</span>${w.命中}</div>
+          <div class="line"><span class="label">爆擊：</span>${w.爆擊}</div>
+          <div class="line"><span class="label">彈藥量：</span>${w.彈藥量}</div>
+          <div class="line"><span class="label">武裝屬性：</span>${w.武裝屬性}</div>
+          <div class="line"><span class="label">武裝類型：</span>${w.武裝類型}</div>
+          <div class="line"><span class="label">武裝效果：</span>${w.武裝效果}</div>
+          <div class="line"><span class="label">使用限制：</span>${w.使用限制}</div>
+        ` : "").join("")}
+      </div>
+    </div>
+  `;
+
+  // 點擊 summary 展開／收合 details
+  const summary = div.querySelector(".summary");
+  const details = div.querySelector(".details");
+  summary.addEventListener("click", () => {
+    details.style.display = details.style.display === "none" ? "block" : "none";
+  });
+
+  return div;
+}
+
+  // 📥 搜尋功能資料來源卡片陣列（合併 JSON 資料）
+  let searchCards = [];
+
+const jsonFiles = ["cards0079.json"]; // 之後可以加入更多
+
+function loadAllCardData() {
+  const loaders = jsonFiles.map(file =>
+    fetch(file)
+      .then(r => r.json())
+      .catch(err => {
+        console.warn(`${file} 載入失敗：`, err);
+        return [];
+      })
+  );
+
+  Promise.all(loaders).then(all => {
+    searchCards = all.flat(); // 合併所有陣列
+    console.log("✅ 卡片資料載入完成，總數：", searchCards.length);
+  });
+} 
+
+  // 🔍 處理搜尋
+function matchField(cardField, selectedValues, mode) {
+  if (selectedValues.length === 0) return true;
+
+  return mode === "AND"
+    ? selectedValues.every(val => cardField.includes(val))
+    : selectedValues.some(val => cardField.includes(val));
+}
+
+function handleSearch() {
+  const selected = {};
+  ['rarity', 'type', 'obtain', 'series', 'tags'].forEach(name => {
+    selected[name] = [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(cb => cb.value);
+  });
+
+  const matchMode = document.querySelector('input[name="matchMode"]:checked')?.value || "AND";
+
+  const result = searchCards.filter(card => {
+    const rarityMatch = selected.rarity.length === 0 || selected.rarity.includes(card.稀有度);
+    const typeMatch = selected.type.length === 0 || selected.type.includes(card.種類);
+    const obtainMatch = selected.obtain.length === 0 || selected.obtain.includes(card.入手方法);
+    const seriesMatch = matchField(card.系列, selected.series, matchMode);
+    const tagMatch = matchField(card.標籤, selected.tags, matchMode);
+
+    const conditions = [rarityMatch, typeMatch, obtainMatch, seriesMatch, tagMatch];
+    return matchMode === "AND"
+      ? conditions.every(Boolean)
+      : conditions.some(Boolean);
+  });
+
+  const container = document.getElementById("search-result-container");
+  container.innerHTML = "";
+
+  if (result.length === 0) {
+    container.innerHTML = "<p>找不到符合條件的卡片。</p>";
+  } else {
+    result.forEach(card => container.appendChild(generateCard(card)));
+  }
+}
+
+  // 🔘 清空勾選項目
+function clearAll() {
+  const inputs = document.querySelectorAll('#search-form input');
+  inputs.forEach(input => input.checked = false);
+  document.getElementById("search-result-container").innerHTML = "";
+}
+
+  // ⏳ 初始化：載入所有 JSON 卡片資料
+  loadAllCardData();
+</script>
    
 </div></br>
 
