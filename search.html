@@ -124,6 +124,13 @@
       border-top: 1px solid #ccc;
     }
 
+    legend {
+  font-size: 20px;
+  margin-left: 12px;
+  font-weight: bold;     /* 可選擇讓文字不要過粗 */
+  color: #333;             /* 更柔和的顏色 */
+}
+
 fieldset {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr)); /* 每行 5 格 */
@@ -172,14 +179,14 @@ fieldset input[type="checkbox"] {
 <div id="search-form">
     <!-- 🔀 搜尋模式切換 -->
 <fieldset>
-  <legend>搜尋模式：</legend>
+  <legend style="margin-left:15px;">搜尋模式：</legend>
   <label><input type="radio" name="matchMode" value="AND" checked> AND（全部符合）</label>
   <label><input type="radio" name="matchMode" value="OR"> OR（任一符合）</label>
 </fieldset>
 
   <!-- 💎 稀有度 -->
   <fieldset>
-    <legend>稀有度：</legend>
+    <legend style="margin-left:15px;">稀有度：</legend>
     <label><input type="radio" name="rarity" value="UR"> UR</label>
     <label><input type="radio" name="rarity" value="SSR"> SSR</label>
     <label><input type="radio" name="rarity" value="SR"> SR</label>
@@ -189,7 +196,7 @@ fieldset input[type="checkbox"] {
 
   <!-- 🧬 種類 -->
   <fieldset>
-    <legend>種類：</legend>
+    <legend style="margin-left:15px;">種類：</legend>
     <label><input type="radio" name="type" value="攻擊"> 攻擊</label>
     <label><input type="radio" name="type" value="支援"> 支援</label>
     <label><input type="radio" name="type" value="防禦"> 防禦</label>
@@ -197,7 +204,7 @@ fieldset input[type="checkbox"] {
 
   <!-- 🎯 入手方法 -->
   <fieldset>
-    <legend>入手方法：</legend>
+    <legend style="margin-left:15px;">入手方法：</legend>
     <label><input type="checkbox" name="obtain" value="開發"> 開發</label>
     <label><input type="checkbox" name="obtain" value="機體補給"> 機體補給</label>
     <label><input type="checkbox" name="obtain" value="活動開發"> 活動開發</label>
@@ -206,7 +213,7 @@ fieldset input[type="checkbox"] {
 
   <!-- 🧾 系列 -->
   <details>
-    <summary><strong>系列（點擊展開）：</strong></summary>
+    <summary style="margin-left:15px;"><strong>系列（點擊展開）：</strong></summary>
     <fieldset>
       <legend style="display:none;">系列</legend>
       <label><input type="checkbox" name="series" value="機動戰士高達">機動戰士高達</label>
@@ -243,7 +250,7 @@ fieldset input[type="checkbox"] {
 
   <!-- 🏷️ 標籤 -->
   <details>
-    <summary><strong>標籤（點擊展開）：</strong></summary>
+    <summary style="margin-left:15px;"><strong>標籤（點擊展開）：</strong></summary>
     <fieldset>
       <legend style="display:none;">標籤</legend>
       <label><input type="checkbox" name="tags" value="宇宙世紀系列">宇宙世紀系列</label>
