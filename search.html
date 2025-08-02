@@ -387,12 +387,22 @@ function loadAllCardData() {
 } 
 
   // 🔍 處理搜尋
-function matchField(cardField, selectedValues, mode) {
+/**
+ * 用來比對卡片欄位與使用者選取值
+ * 支援 AND / OR 模式
+ * @param {string[]} cardValues - 卡片中的多值欄位，如系列、標籤
+ * @param {string[]} selectedValues - 使用者選擇的篩選條件
+ * @param {"AND" | "OR"} mode - 匹配模式
+ * @returns {boolean} - 是否符合篩選條件
+ */
+function matchField(cardValues, selectedValues, mode) {
   if (selectedValues.length === 0) return true;
 
-  return mode === "AND"
-    ? selectedValues.every(val => cardField.includes(val))
-    : selectedValues.some(val => cardField.includes(val));
+  if (mode === "AND") {
+    return selectedValues.every(val => cardValues.includes(val));
+  }
+
+  return selectedValues.some(val => cardValues.includes(val));
 }
 
 function handleSearch() {
