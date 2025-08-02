@@ -404,16 +404,32 @@ function handleSearch() {
   const matchMode = document.querySelector('input[name="matchMode"]:checked')?.value || "AND";
 
   const result = searchCards.filter(card => {
-    const rarityMatch = selected.rarity.length === 0 || selected.rarity.includes(card.稀有度);
-    const typeMatch = selected.type.length === 0 || selected.type.includes(card.種類);
-    const obtainMatch = selected.obtain.length === 0 || selected.obtain.includes(card.入手方法);
-    const seriesMatch = matchField(card.系列, selected.series, matchMode);
-    const tagMatch = matchField(card.標籤, selected.tags, matchMode);
+    const activeConditions = [];
 
-    const conditions = [rarityMatch, typeMatch, obtainMatch, seriesMatch, tagMatch];
-    return matchMode === "AND"
-      ? conditions.every(Boolean)
-      : conditions.some(Boolean);
+    if (selected.rarity.length > 0) {
+      activeConditions.push(() => selected.rarity.includes(card.稀有度));
+    }
+    if (selected.type.length > 0) {
+      activeConditions.push(() => selected.type.includes(card.種類));
+    }
+    if (selected.obtain.length > 0) {
+      activeConditions.push(() => selected.obtain.includes(card.入手方法));
+    }
+    if (selected.series.length > 0) {
+      activeConditions.push(() => selected.series.some(s => card.系列.includes(s)));
+    }
+    if (selected.tags.length > 0) {
+      activeConditions.push(() => selected.tags.some(tag => card.標籤.includes(tag)));
+    }
+
+    // 如果使用者沒選任何條件，就不顯示卡片（防止全部通過）
+    if (activeConditions.length === 0) return false;
+
+    const match = matchMode === "AND"
+      ? activeConditions.every(fn => fn())
+      : activeConditions.some(fn => fn());
+
+    return match;
   });
 
   const container = document.getElementById("search-result-container");
