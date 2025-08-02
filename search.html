@@ -124,7 +124,7 @@
       border-top: 1px solid #ccc;
     }
 
-    fieldset {
+fieldset {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr)); /* 每行 5 格 */
   gap: 8px;
@@ -343,8 +343,11 @@ fieldset input[type="checkbox"] {
   const summary = div.querySelector(".summary");
   const details = div.querySelector(".details");
   summary.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isFocused = div.classList.contains("focused");
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("focused"));
+    if (!isFocused) div.classList.add("focused"); // 展開置中
   });
+
 
   return div;
 }
