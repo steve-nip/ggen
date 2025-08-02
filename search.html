@@ -275,15 +275,21 @@ fieldset input[type="checkbox"] {
 <script>
   // 🔧 關閉卡片視窗
   function closeCard(btn) {
-    const card = btn.closest(".card");
+  const card = btn.closest(".card");
+  if (card) {
     card.classList.remove("focused");
+
+    const details = card.querySelector(".details");
+    if (details) details.style.display = "none"; // 🔐 收合卡片詳細區
+
     const weapon = card.querySelector(".weapon-wrapper");
     const toggleBtn = card.querySelector(".view-weapons");
     if (weapon && toggleBtn) {
-      weapon.style.display = "none";
-      toggleBtn.innerText = "查看武裝資料";
+      weapon.style.display = "none";            // 📦 收合武裝資料
+      toggleBtn.innerText = "查看武裝資料";     // 🕹️ 重設按鈕文字
     }
   }
+}
 
   // 🔧 展開／收合武裝區塊
   function toggleWeaponView(btn) {
@@ -344,8 +350,15 @@ fieldset input[type="checkbox"] {
   const details = div.querySelector(".details");
   summary.addEventListener("click", () => {
     const isFocused = div.classList.contains("focused");
-    document.querySelectorAll(".card").forEach(c => c.classList.remove("focused"));
-    if (!isFocused) div.classList.add("focused"); // 展開置中
+    document.querySelectorAll(".card").forEach(c => {
+      c.classList.remove("focused");
+      const d = c.querySelector(".details");
+      if (d) d.style.display = "none";
+    });
+    if (!isFocused) {
+      div.classList.add("focused");
+      details.style.display = "block";
+    }
   });
 
 
