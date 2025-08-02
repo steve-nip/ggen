@@ -422,7 +422,7 @@ function handleSearch() {
       activeConditions.push(() => selected.tags.some(tag => card.標籤.includes(tag)));
     }
 
-    // 如果使用者沒選任何條件，就不顯示卡片（防止全部通過）
+    // 如果沒有任何條件被選中，就不顯示任何卡片
     if (activeConditions.length === 0) return false;
 
     const match = matchMode === "AND"
