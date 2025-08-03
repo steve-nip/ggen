@@ -23,7 +23,7 @@
       margin: 0;
     }
     .card-grid {
-      align-items: start;
+      align-items: stretch;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
@@ -36,6 +36,11 @@
       padding: 16px;
       transition: all 0.3s ease;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between; /* 保持底部按鈕區塊對齊 */
+
     }
     .card:hover {
       background-color: #eef;
@@ -154,9 +159,19 @@ fieldset input[type="checkbox"] {
   accent-color: #3272ff; /* 可選：修改 checkbox 顏色（支援現代瀏覽器） */
 }
 
-  .control-buttons {
-    margin-top: 20px;
-  }
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* 控制按鈕與訊息的間距 */
+  margin-bottom: 12px;
+  flex-wrap: wrap; /* 如果螢幕太小可以自動換行 */
+}
+
+.search-count-message {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
   </style>
 
 </head>
@@ -205,16 +220,15 @@ fieldset input[type="checkbox"] {
   <!-- 🎯 入手方法 -->
   <fieldset style="border: 2px solid black; padding: 10px;">
     <legend style="margin-left:15px;">入手方法：</legend>
-    <label><input type="checkbox" name="obtain" value="開發"> 開發</label>
-    <label><input type="checkbox" name="obtain" value="機體補給"> 機體補給</label>
-    <label><input type="checkbox" name="obtain" value="活動開發"> 活動開發</label>
-    <label><input type="checkbox" name="obtain" value="活動報酬"> 活動報酬</label>
+    <label><input type="radio" name="obtain" value="開發"> 開發</label>
+    <label><input type="radio" name="obtain" value="機體補給"> 機體補給</label>
+    <label><input type="radio" name="obtain" value="其他"> 其他</label>
   </fieldset>
 
 <fieldset style="border: 2px solid black; padding: 10px;">
 <label  style="margin-left:15px;"><input type="radio" name="seriesMode" value="AND">系列全部符合</label>
 <label  style="margin-left:15px;"><input type="radio" name="seriesMode" value="OR" checked>系列其中之一即可</label>
-</fieldset><br>
+</fieldset>
 
   <!-- 🧾 系列 -->
   <details>
@@ -273,8 +287,8 @@ fieldset input[type="checkbox"] {
 
   <!-- 🔘 控制按鈕 -->
   <div class="control-buttons">
-    <button onclick="handleSearch()">搜尋</button>
-    <button onclick="clearAll()">清空</button>
+  <button onclick="handleSearch()">搜尋</button>
+  <button onclick="clearAll()">清空</button>
   </div>
 </div>
 
@@ -287,7 +301,8 @@ fieldset input[type="checkbox"] {
 
 </script>
 
-<div id="search-result-container"  class="card-grid"></div>
+<div id="search-result-container" class="card-grid"></div>
+
 
 <script>
   // 🔧 關閉卡片視窗
@@ -424,29 +439,34 @@ function matchField(cardValues, selectedValues, mode) {
 
 function handleSearch() {
   const selected = {};
-  ['rarity', 'type', 'obtain', 'series', 'tags'].forEach(name => {
+
+  // ✅ 三個單選欄位（radio）
+  selected.rarity = document.querySelector('input[name="rarity"]:checked')?.value || "";
+  selected.type   = document.querySelector('input[name="type"]:checked')?.value || "";
+  selected.obtain = document.querySelector('input[name="obtain"]:checked')?.value || "";
+
+  // ✅ 多選欄位維持陣列結構
+  ['series', 'tags'].forEach(name => {
     selected[name] = [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(cb => cb.value);
   });
 
-  const matchMode = document.querySelector('input[name="matchMode"]:checked')?.value || "AND";
-
-  // 📌 額外讀取系列與標籤的個別模式（預設為 OR）
-  const seriesMode = document.querySelector('input[name="seriesMode"]:checked')?.value || "OR";
-  const tagsMode = document.querySelector('input[name="tagsMode"]:checked')?.value || "OR";
+  const matchMode   = document.querySelector('input[name="matchMode"]:checked')?.value || "AND";
+  const seriesMode  = document.querySelector('input[name="seriesMode"]:checked')?.value || "OR";
+  const tagsMode    = document.querySelector('input[name="tagsMode"]:checked')?.value || "OR";
 
   const result = searchCards.filter(card => {
     const activeConditions = [];
 
-    if (selected.rarity.length > 0) {
-      activeConditions.push(() => selected.rarity.includes(card.稀有度));
+    if (selected.rarity !== "") {
+      activeConditions.push(() => selected.rarity === card.稀有度);
     }
 
-    if (selected.type.length > 0) {
-      activeConditions.push(() => selected.type.includes(card.種類));
+    if (selected.type !== "") {
+      activeConditions.push(() => selected.type === card.種類);
     }
 
-    if (selected.obtain.length > 0) {
-      activeConditions.push(() => selected.obtain.includes(card.入手方法));
+    if (selected.obtain !== "") {
+      activeConditions.push(() => selected.obtain === card.入手方法);
     }
 
     // ✅ 系列篩選（支援 AND/OR 模式）
@@ -467,7 +487,6 @@ function handleSearch() {
       }
     }
 
-    // 若沒有選擇任何條件，就不顯示卡片
     if (activeConditions.length === 0) return false;
 
     const match = matchMode === "AND"
@@ -480,8 +499,17 @@ function handleSearch() {
   const container = document.getElementById("search-result-container");
   container.innerHTML = "";
 
+  // 🔔 顯示符合條件的數量提示
+  // 🔔 顯示符合條件的數量提示（獨立包在 div 中）
+const countMessage = `
+  <div class="search-count-message style="text-align: center;">
+    🔍 搜尋符合條件的單位共 <strong>${result.length}</strong> 架。
+  </div>
+`;
+container.insertAdjacentHTML("afterbegin", countMessage);
+
   if (result.length === 0) {
-    container.innerHTML = "<p>找不到符合條件的卡片。</p>";
+    container.insertAdjacentHTML("beforeend", "<p>找不到符合條件的單位。</p>");
   } else {
     result.forEach(card => container.appendChild(generateCard(card)));
   }
