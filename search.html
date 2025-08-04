@@ -193,14 +193,17 @@ fieldset input[type="checkbox"] {
 
 <div id="search-form">
     <!-- 🔀 搜尋模式切換 -->
-<fieldset style="border: 2px solid black; padding: 10px;">
+<div class="border rounded bg-light shadow-sm">      
+<fieldset style="border: 2px solid black; padding: 5px;">
   <legend style="margin-left:15px;">搜尋模式：</legend>
   <label><input type="radio" name="matchMode" value="AND" checked> AND（全部符合）</label>
   <label><input type="radio" name="matchMode" value="OR"> OR（任一符合）</label>
 </fieldset>
+</div>
 
   <!-- 💎 稀有度 -->
-  <fieldset style="border: 2px solid black; padding: 10px;">
+ <div class="border rounded bg-light shadow-sm">
+  <fieldset style="border: 2px solid black; padding: 5px;">
     <legend style="margin-left:15px;">稀有度：</legend>
     <label><input type="radio" name="rarity" value="UR"> UR</label>
     <label><input type="radio" name="rarity" value="SSR"> SSR</label>
@@ -208,24 +211,54 @@ fieldset input[type="checkbox"] {
     <label><input type="radio" name="rarity" value="R"> R</label>
     <label><input type="radio" name="rarity" value="N"> N</label>
   </fieldset>
+  </div>
 
   <!-- 🧬 種類 -->
-  <fieldset style="border: 2px solid black; padding: 10px;">
+<div class="border rounded bg-light shadow-sm">
+  <fieldset style="border: 2px solid black; padding: 5px;">
     <legend style="margin-left:15px;">種類：</legend>
     <label><input type="radio" name="type" value="攻擊"> 攻擊</label>
     <label><input type="radio" name="type" value="支援"> 支援</label>
     <label><input type="radio" name="type" value="防禦"> 防禦</label>
   </fieldset>
+  </div>
 
   <!-- 🎯 入手方法 -->
-  <fieldset style="border: 2px solid black; padding: 10px;">
+<div class="border rounded bg-light shadow-sm"> 
+ <fieldset style="border: 2px solid black; padding: 5px;">
     <legend style="margin-left:15px;">入手方法：</legend>
     <label><input type="radio" name="obtain" value="開發"> 開發</label>
     <label><input type="radio" name="obtain" value="機體補給"> 機體補給</label>
     <label><input type="radio" name="obtain" value="其他"> 其他</label>
-  </fieldset>
+ </fieldset>
+ </div>
 
-<fieldset style="border: 2px solid black; padding: 10px;">
+<div class="border rounded p-3 bg-light shadow-sm">
+<fieldset style="border: 2px solid black; padding: 5px;">
+  <label style="margin-left:15px;"><input type="radio" name="terrainMode" value="AND" checked> 地型全部符合（AND）</label>
+  <label style="margin-left:15px;"><input type="radio" name="terrainMode" value="OR"> 只要符合其中一個（OR）</label>
+</fieldset>
+
+<details>
+    <summary style="margin-left:15px;"><strong>地型（點擊展開）：</strong></summary>
+<fieldset>
+    <legend style="display:none;">地型：</legend>
+    <label><input type="checkbox" name="terrain" value="宇宙"> 宇宙</label>
+    <label><input type="checkbox" name="terrain" value="宇宙移動半減"> 宇宙移動半減</label>
+    <label><input type="checkbox" name="terrain" value="空中"> 空中</label>
+    <label><input type="checkbox" name="terrain" value="空中移動半減"> 空中移動半減</label>
+    <label><input type="checkbox" name="terrain" value="地面"> 地面</label>
+    <label><input type="checkbox" name="terrain" value="地面移動半減"> 地面移動半減</label>
+    <label><input type="checkbox" name="terrain" value="水面"> 水面</label>
+    <label><input type="checkbox" name="terrain" value="水面移動半減"> 水面移動半減</label>
+    <label><input type="checkbox" name="terrain" value="水中"> 水中</label>
+    <label><input type="checkbox" name="terrain" value="水中移動半減"> 水中移動半減</label>
+</fieldset>
+</details>
+</div>
+
+<div class="border rounded p-3 bg-light shadow-sm">
+<fieldset style="border: 2px solid black; padding: 5px;">
 <label  style="margin-left:15px;"><input type="radio" name="seriesMode" value="AND">系列全部符合</label>
 <label  style="margin-left:15px;"><input type="radio" name="seriesMode" value="OR" checked>系列其中之一即可</label>
 </fieldset>
@@ -258,16 +291,70 @@ fieldset input[type="checkbox"] {
       <label><input type="checkbox" name="series" value="機動戰士高達外傳 蒼藍命運">機動戰士高達外傳 蒼藍命運</label>
       <label><input type="checkbox" name="series" value="機動戰士高達戰記 Lost War Chronicles">機動戰士高達戰記 Lost War Chronicles</label>
       <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
-      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
-      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
-      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
-      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
-      <label><input type="checkbox" name="series" value="機動戰士高達外傳 MISSING LINK">機動戰士高達外傳 MISSING LINK</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 雷霆戰線">機動戰士高達 雷霆戰線</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達0080 口袋中的戰爭">機動戰士高達0080 口袋中的戰爭</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達戰記 BATTLEFIELD RECORD U.C.0081">機動戰士高達戰記 BATTLEFIELD RECORD U.C.0081</label>
+      <label><input type="checkbox" name="series" value="機動戰士Gundam GQuuuuuuX">機動戰士Gundam GQuuuuuuX</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達0083 STARDUST MEMORY">機動戰士高達0083 STARDUST MEMORY</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達0083 REBELLION">機動戰士高達0083 REBELLION</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 幽靈子彈">機動戰士高達 幽靈子彈</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 KATANA">機動戰士高達 KATANA</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 Ecole du Ciel 天空的學校">機動戰士高達 Ecole du Ciel 天空的學校</label>
+      <label><input type="checkbox" name="series" value="ADVANCE OF Z 泰坦斯的旗下">ADVANCE OF Z 泰坦斯的旗下</label>
+      <label><input type="checkbox" name="series" value="機動戰士Z高達">機動戰士Z高達</label>
+      <label><input type="checkbox" name="series" value="機動戰士Z高達 Define">機動戰士Z高達 Define</label>
+      <label><input type="checkbox" name="series" value="Z-MSV">Z-MSV</label>
+      <label><input type="checkbox" name="series" value="高達新體驗0087 GREEN DIVERS">高達新體驗0087 GREEN DIVERS</label>
+      <label><input type="checkbox" name="series" value="高達前哨戰">高達前哨戰</label>
+      <label><input type="checkbox" name="series" value="MSV-R">MSV-R</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 MSV-R 尊尼.萊登的歸來">機動戰士高達 MSV-R 尊尼.萊登的歸來</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 魔女之夜">機動戰士高達 魔女之夜</label>
+      <label><input type="checkbox" name="series" value="DOUBLE FAKE UNDER THE GUNDAM">DOUBLE FAKE UNDER THE GUNDAM</label>
+      <label><input type="checkbox" name="series" value="CCA-MSV">CCA-MSV</label>
+      <label><input type="checkbox" name="series" value="M-MSV">M-MSV</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達UC">機動戰士高達UC</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達NT">機動戰士高達NT</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達F90">機動戰士高達F90</label>
+      <label><input type="checkbox" name="series" value="機動戰士海盜高達">機動戰士海盜高達</label>
+      <label><input type="checkbox" name="series" value="機動戰士V高達">機動戰士V高達</label>
+      <label><input type="checkbox" name="series" value="新機動戰記高達W DUAL STORY G-UNIT">新機動戰記高達W DUAL STORY G-UNIT</label>
+      <label><input type="checkbox" name="series" value="新機動戰記高達W 無盡的華爾茲">新機動戰記高達W 無盡的華爾茲</label>
+      <label><input type="checkbox" name="series" value="逆A高達">逆A高達</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED MSV">機動戰士高達SEED MSV</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED ASTRAY">機動戰士高達SEED ASTRAY</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED ASTRAY R">機動戰士高達SEED ASTRAY R</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED ASTRAY B">機動戰士高達SEED ASTRAY B</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED X ASTRAY">機動戰士高達SEED X ASTRAY</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED Recollection">機動戰士高達SEED Recollection</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED DESTINY-MSV">機動戰士高達SEED DESTINY-MSV</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達SEED FREEDOM">機動戰士高達SEED FREEDOM</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達00P">機動戰士高達00P</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達001">機動戰士高達001</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達00V">機動戰士高達00V</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達AGE">機動戰士高達AGE</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達AGE~MEMORY OF EDEN~">機動戰士高達AGE~MEMORY OF EDEN~</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達AGE UNKNOWN SOLDIER">機動戰士高達AGE UNKNOWN SOLDIER</label>
+      <label><input type="checkbox" name="series" value="Reconguista in G">Reconguista in G</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 鐵血孤兒 月鋼">機動戰士高達 鐵血孤兒 月鋼</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 水星的魔女 [PROLOGUE]">機動戰士高達 水星的魔女 [PROLOGUE]</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達模型製作家 起始G">機動戰士高達模型製作家 起始G</label>
+      <label><input type="checkbox" name="series" value="高達創戰者">高達創戰者</label>
+      <label><input type="checkbox" name="series" value="模型狂四郎">模型狂四郎</label>
+      <label><input type="checkbox" name="series" value="SD高達世界 扭蛋戰士 大混戰">SD高達世界 扭蛋戰士 大混戰</label>
+      <label><input type="checkbox" name="series" value="GUNDAM EVOLVE">GUNDAM EVOLVE</label>
+      <label><input type="checkbox" name="series" value="SD高達GX">SD高達GX</label>
+      <label><input type="checkbox" name="series" value="GUNDAM THE BATTLE MASTER">GUNDAM THE BATTLE MASTER</label>
+      <label><input type="checkbox" name="series" value="高達TACTICS MOBILITY FLEET0079">高達TACTICS MOBILITY FLEET0079</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 基連的野望">機動戰士高達 基連的野望</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 戰場之絆">機動戰士高達 戰場之絆</label>
+      <label><input type="checkbox" name="series" value="機動戰士高達 EXTREME VS.">機動戰士高達 EXTREME VS.</label>
+      <label><input type="checkbox" name="series" value="G GENERATION系列">G GENERATION系列</label>
       <!-- 可繼續加入更多系列 -->
     </fieldset>
-  </details><br>
+  </details></div>
 
-<fieldset style="border: 2px solid black; padding: 10px; ">
+<div class="border rounded p-3 bg-light shadow-sm"> 
+<fieldset style="border: 2px solid black; padding: 5px; ">
 <label  style="margin-left:15px;"><input type="radio" name="tagsMode" value="AND">標籤全部符合</label>
 <label  style="margin-left:15px;"><input type="radio" name="tagsMode" value="OR" checked>標籤其中之一即可</label>
 </fieldset>
@@ -281,12 +368,90 @@ fieldset input[type="checkbox"] {
       <label><input type="checkbox" name="tags" value="獨立世界觀系列">獨立世界觀系列</label>
       <label><input type="checkbox" name="tags" value="高達">高達</label>
       <label><input type="checkbox" name="tags" value="單眼球">單眼球</label>
+      <label><input type="checkbox" name="tags" value="主角">主角</label>
+      <label><input type="checkbox" name="tags" value="勁敵">勁敵</label>
+      <label><input type="checkbox" name="tags" value="專用機">專用機</label>
+      <label><input type="checkbox" name="tags" value="MA">MA</label>
+      <label><input type="checkbox" name="tags" value="可變機">可變機</label>
+      <label><input type="checkbox" name="tags" value="試作機">試作機</label>
+      <label><input type="checkbox" name="tags" value="腦波傳導">腦波傳導</label>
+      <label><input type="checkbox" name="tags" value="最後決戰">最後決戰</label>
+      <label><input type="checkbox" name="tags" value="壓力">壓力</label>
+      <label><input type="checkbox" name="tags" value="地球聯邦軍(宇宙世紀)">地球聯邦軍(宇宙世紀)</label>
+      <label><input type="checkbox" name="tags" value="自護公國軍">自護公國軍</label>
+      <label><input type="checkbox" name="tags" value="奧干">奧干</label>
+      <label><input type="checkbox" name="tags" value="泰坦斯">泰坦斯</label>
+      <label><input type="checkbox" name="tags" value="阿古捷斯">阿古捷斯</label>
+      <label><input type="checkbox" name="tags" value="新自護">新自護</label>
+      <label><input type="checkbox" name="tags" value="地球聯合軍">地球聯合軍</label>
+      <label><input type="checkbox" name="tags" value="札多">札多</label>
+      <label><input type="checkbox" name="tags" value="奧布">奧布</label>
+      <label><input type="checkbox" name="tags" value="三艦同盟">三艦同盟</label>
+      <label><input type="checkbox" name="tags" value="各國代表">各國代表</label>
+      <label><input type="checkbox" name="tags" value="魔鬼高達軍團">魔鬼高達軍團</label>
+      <label><input type="checkbox" name="tags" value="流星作戰">流星作戰</label>
+      <label><input type="checkbox" name="tags" value="OZ">OZ</label>
+      <label><input type="checkbox" name="tags" value="地球圈統一聯合">地球圈統一聯合</label>
+      <label><input type="checkbox" name="tags" value="白色獠牙">白色獠牙</label>
+      <label><input type="checkbox" name="tags" value="MO-V">MO-V</label>
+      <label><input type="checkbox" name="tags" value="山克王國">山克王國</label>
+      <label><input type="checkbox" name="tags" value="自由號">自由號</label>
+      <label><input type="checkbox" name="tags" value="宇宙革命軍">宇宙革命軍</label>
+      <label><input type="checkbox" name="tags" value="地球聯邦軍(X)">地球聯邦軍(X)</label>
+      <label><input type="checkbox" name="tags" value="新地球聯邦">新地球聯邦</label>
+      <label><input type="checkbox" name="tags" value="禿鷹">禿鷹</label>
+      <label><input type="checkbox" name="tags" value="民兵團">民兵團</label>
+      <label><input type="checkbox" name="tags" value="迪亞娜回歸軍">迪亞娜回歸軍</label>
+      <label><input type="checkbox" name="tags" value="廢物商公會">廢物商公會</label>
+      <label><input type="checkbox" name="tags" value="蛇尾">蛇尾</label>
+      <label><input type="checkbox" name="tags" value="天人">天人</label>
+      <label><input type="checkbox" name="tags" value="人類革新聯盟">人類革新聯盟</label>
+      <label><input type="checkbox" name="tags" value="聯邦">聯邦</label>
+      <label><input type="checkbox" name="tags" value="AEU">AEU</label>
+      <label><input type="checkbox" name="tags" value="聯合國軍">聯合國軍</label>
+      <label><input type="checkbox" name="tags" value="地球聯邦軍(00)">地球聯邦軍(00)</label>
+      <label><input type="checkbox" name="tags" value="地球聯邦軍(AGE)">地球聯邦軍(AGE)</label>
+      <label><input type="checkbox" name="tags" value="梅格法納">梅格法納</label>
+      <label><input type="checkbox" name="tags" value="中樞軍">中樞軍</label>
+      <label><input type="checkbox" name="tags" value="中樞自衛隊">中樞自衛隊</label>
+      <label><input type="checkbox" name="tags" value="永賀">永賀</label>
+      <label><input type="checkbox" name="tags" value="鐵華團">鐵華團</label>
+      <label><input type="checkbox" name="tags" value="加拉爾號角">加拉爾號角</label>
+      <label><input type="checkbox" name="tags" value="他賓氐">他賓氐</label>
+      <label><input type="checkbox" name="tags" value="SD高達">SD高達</label>
+      <label><input type="checkbox" name="tags" value="G GENERATION系列">G GENERATION系列</label>
+      <label><input type="checkbox" name="tags" value="零式系統">零式系統</label>
+      <label><input type="checkbox" name="tags" value="阿賴耶識系統">阿賴耶識系統</label>
+      <label><input type="checkbox" name="tags" value="GUND-ARM">GUND-ARM</label>
+      <label><input type="checkbox" name="tags" value="再生精神感應裝置">再生精神感應裝置</label>
+      <label><input type="checkbox" name="tags" value="NT-D">NT-D</label>
+      <label><input type="checkbox" name="tags" value="ALICE">ALICE</label>
+      <label><input type="checkbox" name="tags" value="生化感應器">生化感應器</label>
+      <label><input type="checkbox" name="tags" value="納米表層">納米表層</label>
+      <label><input type="checkbox" name="tags" value="機動軌跡系統">機動軌跡系統</label>
+      <label><input type="checkbox" name="tags" value="高達模型">高達模型</label>
+      <label><input type="checkbox" name="tags" value="大型機">大型機</label>
+      <label><input type="checkbox" name="tags" value="A-Laws">A-Laws</label>
+      <label><input type="checkbox" name="tags" value="蒙特商會">蒙特商會</label>
+      <label><input type="checkbox" name="tags" value="電光石火">電光石火</label>
+      <label><input type="checkbox" name="tags" value="一擊必殺">一擊必殺</label>
+      <label><input type="checkbox" name="tags" value="堅牢">堅牢</label>
+      <label><input type="checkbox" name="tags" value="突破力">突破力</label>
+      <label><input type="checkbox" name="tags" value="宇宙海盜骷髏尖兵">宇宙海盜骷髏尖兵</label>
+      <label><input type="checkbox" name="tags" value="神聖軍事同盟">神聖軍事同盟</label>
+      <label><input type="checkbox" name="tags" value="渣斯卡路帝國">渣斯卡路帝國</label>
+      <label><input type="checkbox" name="tags" value="傭兵">傭兵</label>
+      <label><input type="checkbox" name="tags" value="SEED系列">SEED系列</label>
+      <label><input type="checkbox" name="tags" value="W系列">W系列</label>
+      <label><input type="checkbox" name="tags" value="王牌機">王牌機</label>
+      <label><input type="checkbox" name="tags" value="指揮官機">指揮官機</label>
+      <label><input type="checkbox" name="tags" value="新人類專用機">新人類專用機</label>
       <!-- 可繼續加入更多標籤 -->
     </fieldset>
-  </details><br>
+  </details></div>
 
   <!-- 🔘 控制按鈕 -->
-  <div class="control-buttons">
+  <div class="control-buttons p-3 bg-light shadow-sm">
   <button onclick="handleSearch()">搜尋</button>
   <button onclick="clearAll()">清空</button>
   </div>
@@ -301,7 +466,7 @@ fieldset input[type="checkbox"] {
 
 </script>
 
-<div id="search-result-container" class="card-grid"></div>
+<div id="search-result-container" class="card-grid boredr rounded p-3 bg-light shadow-sm"></div>
 
 
 <script>
@@ -444,6 +609,7 @@ function handleSearch() {
   selected.rarity = document.querySelector('input[name="rarity"]:checked')?.value || "";
   selected.type   = document.querySelector('input[name="type"]:checked')?.value || "";
   selected.obtain = document.querySelector('input[name="obtain"]:checked')?.value || "";
+  selected.terrain = [...document.querySelectorAll('input[name="terrain"]:checked')].map(cb => cb.value);
 
   // ✅ 多選欄位維持陣列結構
   ['series', 'tags'].forEach(name => {
@@ -453,6 +619,7 @@ function handleSearch() {
   const matchMode   = document.querySelector('input[name="matchMode"]:checked')?.value || "AND";
   const seriesMode  = document.querySelector('input[name="seriesMode"]:checked')?.value || "OR";
   const tagsMode    = document.querySelector('input[name="tagsMode"]:checked')?.value || "OR";
+  const terrainMode = document.querySelector('input[name="terrainMode"]:checked')?.value || "OR";
 
   const result = searchCards.filter(card => {
     const activeConditions = [];
@@ -468,6 +635,14 @@ function handleSearch() {
     if (selected.obtain !== "") {
       activeConditions.push(() => selected.obtain === card.入手方法);
     }
+
+    if (selected.terrain.length > 0) {
+  if (terrainMode === "AND") {
+    activeConditions.push(() => selected.terrain.every(t => card.地型.includes(t)));
+  } else {
+    activeConditions.push(() => selected.terrain.some(t => card.地型.includes(t)));
+  }
+}
 
     // ✅ 系列篩選（支援 AND/OR 模式）
     if (selected.series.length > 0) {
