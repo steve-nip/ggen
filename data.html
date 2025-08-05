@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>單位圖鑑</title>
+  <title>【SD高達 G世代永恆】單位圖鑑｜SD Gundam G Generation Eternal unit data</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
     <!-- Google tag (gtag.js) -->
@@ -124,7 +124,7 @@
 </head>
 <body>
     <div style="background-color: #0a0a0a; width: 100%; display: block; padding: 10px;">
-    <img src="image/cover.jpg" alt="Logo" style="max-width:100%; max-width:700px; height:auto; display:block; margin:auto;">
+    <img src="image/cover2.png" alt="Logo" style="max-width:100%; max-width:400px; height:auto; display:block; margin:auto;">
   </div>
 
   <!-- 頁面中放置 header 的容器 -->
@@ -229,24 +229,61 @@
   }
 
   // ☑️ 呼叫不同年代的載入
-  loadCardData("cards0079.json", "card-container-0079");
-  loadCardData("cards0093.json", "card-container-0093");
+  loadCardData("jsonfolder/cards0079.json", "card-container-0079");
+  loadCardData("jsonfolder/cardsz.json", "card-container-z");
+  loadCardData("jsonfolder/cards0093.json", "card-container-0093");
+  loadCardData("jsonfolder/cardsg.json", "card-container-g");
+  loadCardData("jsonfolder/cardsw.json", "card-container-w");
+  loadCardData("jsonfolder/cardsseed.json", "card-container-seed");
+  loadCardData("jsonfolder/cards00.json", "card-container-00");
+  loadCardData("jsonfolder/cardsiron.json", "card-container-iron");
+  loadCardData("jsonfolder/cardsmecury.json", "card-container-mecury");
+  loadCardData("jsonfolder/cardsggen.json", "card-container-ggen");
   // 若有新 JSON 加在這裡：
   // loadCardData("cardsw.json", "card-container-w");
 
 </script>
   
 <details>
-  <summary style="text-align: center;"> 機動戰士高達</summary>
+  <summary style="text-align: center;"> 機動戰士高達系列</summary>
   <div id="card-container-0079" class="card-grid"></div>
-  </details>
-
+</details>
 <details>
-  <summary style="text-align: center;"> 0093</summary>
-  待更新
+  <summary style="text-align: center;"> 機動戰士Z高達</summary>
+  <div id="card-container-z" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 機動戰士高達 馬沙之反擊/UC/NT</summary>
   <div id="card-container-0093" class="card-grid"></div>
 </details>
-
+<details>
+  <summary style="text-align: center;"> 機動武鬥傳G高達</summary>
+  <div id="card-container-g" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 新機動戰記高達W</summary>
+  <div id="card-container-w" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 機動戰士高達SEED系列</summary>
+  <div id="card-container-seed" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 機動戰士高達00</summary>
+  <div id="card-container-00" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 機動戰士高達 鐵血孤兒</summary>
+  <div id="card-container-iron" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> 機動戰士高達 水星的魔女</summary>
+  <div id="card-container-mecury" class="card-grid"></div>
+</details>
+<details>
+  <summary style="text-align: center;"> G GENERATION系列 & 其他</summary>
+  <div id="card-container-ggen" class="card-grid"></div>
+</details>
 
 <div class="container text-center my-5">
   <a href="index.html" class="btn btn-primary">回到主頁</a>
